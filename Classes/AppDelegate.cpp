@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "GameScene.h"
+#include "GameMenuLayer.h"
 
 USING_NS_CC;
 
@@ -27,7 +28,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     //CCScene *pScene = HelloWorld::scene();
-	CCScene *pScene = GameScene::create();
+	//CCScene *pScene = GameScene::create();
+	CCScene *pScene = GameMenuLayer::scene();
 
     // run
     pDirector->runWithScene(pScene);
