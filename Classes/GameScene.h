@@ -15,6 +15,7 @@ public:
 	virtual ~GameScene();
 	CREATE_FUNC(GameScene)
 	virtual bool init();
+	void preloadResources();
 protected:
 	BackgroundLayer* _bgLayer;
 };
