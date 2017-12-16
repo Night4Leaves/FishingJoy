@@ -13,6 +13,9 @@ bool GameScene::init(){
 		_bgLayer = BackgroundLayer::create();
 		CC_BREAK_IF(!_bgLayer);
 		this->addChild(_bgLayer);
+		_fishLayer = FishLayer::create();
+		CC_BREAK_IF(!_fishLayer);
+		this->addChild(_fishLayer);
 		return true;
 	}while(0);
 	return false;

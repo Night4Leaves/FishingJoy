@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "BackgroundLayer.h"
-//#include
+#include "FishLayer.h"
 //#include
 //#include
 //#include
@@ -18,4 +18,5 @@ public:
 	void preloadResources();
 protected:
 	BackgroundLayer* _bgLayer;
+	FishLayer* _fishLayer;
 };
