@@ -14,4 +14,5 @@ bool FishNet::init(){
 		_fishNetSprite->setAnchorPoint(ccp(0.5, 0.5));
 		return true;
 	}while(0);
+	return false;
 }

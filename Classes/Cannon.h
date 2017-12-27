@@ -15,6 +15,11 @@ typedef enum{
 	k_Cannon_Invalid
 }CannonType;
 
+typedef enum{
+	    k_Cannon_Operate_Up = 1,
+	    k_Cannon_Operate_Down = -1
+}CannonOperate;
+
 class Cannon:
 	public CCNode{
 public:
@@ -25,6 +30,7 @@ public:
 	CannonType getType(void);
 	float getFireRange();
 	static Cannon* create(CannonType type = k_Cannon_Type_1);
+	CCSize getSize();
 protected:
 	CCArray* _cannonSprite;
 	CannonType _type;

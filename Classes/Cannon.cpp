@@ -23,6 +23,7 @@ bool Cannon::init(CannonType type/* = k_Cannon_Type_1*/){
 		this->setType(type);
 		return true;
 	}while(0);
+	return false;
 }
 
 void Cannon::setType(CannonType type){
@@ -31,10 +32,10 @@ void Cannon::setType(CannonType type){
 	}
 	if(type < k_Cannon_Type_1){
 		type = (CannonType)(k_Cannon_Count - 1);
-	}else if(type > k_Cannon_Count){
+	}else if(type > k_Cannon_Count - 1){
 		type = k_Cannon_Type_1;
 	}
-	this->removeChildByTag(_type,false);
+	this->removeChildByTag(_type);
 	CCSprite* sprite = (CCSprite*) _cannonSprite->objectAtIndex(type);
 	this->addChild(sprite,0,type);
 	_type = type;
@@ -56,4 +57,15 @@ float Cannon::getFireRange(){
 	double temp = pow(winSize.width * 0.5,2) + pow(winSize.height * 0.5,2);
 	double result = sqrt(temp);
 	return result/7 * (_type + 1) + 500;
+}
+
+CannonType Cannon::getType()
+{
+	return _type;
+}
+
+CCSize Cannon::getSize()
+{
+	CCSprite* cannonSprite = (CCSprite*) _cannonSprite->objectAtIndex(_type);
+	return cannonSprite->getContentSize();
 }

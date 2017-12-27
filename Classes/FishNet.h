@@ -12,4 +12,4 @@ public:
 	CREATE_FUNC(FishNet);
 protected:
 	CCSprite*  _fishNetSprite;
-}
+};
