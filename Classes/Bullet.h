@@ -11,6 +11,8 @@ public:
 	bool init();
 	float getSpeed(int type);
 	CREATE_FUNC(Bullet);
+	void end();
+	void flyTo(CCPoint targetInWordSpace, int type =0);
 protected:
 	CCSprite*  _bulletSprite;
 };
