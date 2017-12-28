@@ -14,7 +14,11 @@ public:
 	bool init();
 	CREATE_FUNC(FishLayer)
 	void addFish(float dt);
+<<<<<<< HEAD
 	CCArray* getFishes();
+	void resetFish(Fish* fish);
+=======
+>>>>>>> parent of ec185bd... install FishNet
 protected:
 	CCArray* _fishes;
 };

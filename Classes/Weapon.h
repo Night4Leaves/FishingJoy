@@ -17,10 +17,13 @@ public:
 	void aimAt(CCPoint target);
 	void shootTo (CCPoint target);
 	Bullet* getBulletToShoot();
+<<<<<<< HEAD
 	CCRect getCollisionArea(Bullet* bullet);
+	CannonType getCannonType();
+=======
+>>>>>>> parent of ec185bd... install FishNet
 protected:
-	CC_SYNTHESIZE_READONLY(Cannon*, _cannon, Cannon);
-	CC_SYNTHESIZE_READONLY(CCArray*, _bullets, Bullets);
-	CC_SYNTHESIZE_READONLY(CCArray*, _fishNets, FishNets);
-	CC_SYNTHESIZE_READONLY(CCArray*, _particles, CCParticleSystemQuad);
+	Cannon* _cannon;
+	CCArray* _bullets;
+	CCArray* _fishNets;
 };

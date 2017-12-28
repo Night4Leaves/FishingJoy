@@ -26,7 +26,15 @@ bool GameScene::init(){
 		CC_BREAK_IF(!_touchLayer);
 		this->addChild(_touchLayer);
 
+<<<<<<< HEAD
+		_paneLayer = PanelLayer::create();
+		CC_BREAK_IF(!_paneLayer);
+		this->addChild(_paneLayer);
+		_paneLayer->getGoldCounterLayer()->setNumber(FishingJoyData::getInstance()->getGold());
+		
 		scheduleUpdate();
+=======
+>>>>>>> parent of ec185bd... install FishNet
 		return true;
 	}while(0);
 	return false;
@@ -69,7 +77,13 @@ void GameScene::cannonAimAt(CCPoint target){
 }
 
 void GameScene::cannonShootTo(CCPoint target){
-	_cannonLayer->shootTo(target);
+<<<<<<< HEAD
+	int cost = (_cannonLayer->getWeapon()->getCannonType() + 1) * 1;
+	int currentGold = FishingJoyData::getInstance()->getGold();
+	if(currentGold >= cost){
+		_cannonLayer->shootTo(target);
+		this->alterGold(-cost);
+	}
 }
 
 bool GameScene::checkOutCollisionBetweenFishesAndBullet(Bullet* bullet){
@@ -94,7 +108,7 @@ void GameScene::checkOutCollision(){
 		Bullet* bullet = (Bullet*)object;
 		if(bullet->isVisible()){
 			if(checkOutCollisionBetweenFishesAndBullet(bullet)){
-				
+				checkOutCollisionBetweenFishesAndFishingNet(bullet);
 			}
 		}
 	}
@@ -102,4 +116,47 @@ void GameScene::checkOutCollision(){
 
 void GameScene::update(float delta){
 	this->checkOutCollision();
+}
+
+void GameScene::fishWillBeCaught(Fish* fish){
+	int weaponType = _cannonLayer->getWeapon()->getCannonType();
+	int fishType = fish->getType();
+	float fishPer[k_Fish_Type_Count] = { 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4 };
+	float weaponPer[k_Cannon_Count] = { 0.3, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1 };
+	if(CCRANDOM_0_1() < 1.1 /*Óã±»×½¸ÅÂÊ*/){
+		fish->beCaught();
+		int reward = STATIC_DATA_INT(CCString::createWithFormat(STATIC_DATA_STRING("reward_format"),fishType)->getCString());
+		alterGold(reward);
+	}
+}
+
+void GameScene::checkOutCollisionBetweenFishesAndFishingNet(Bullet *bullet){
+	Weapon* weapon = _cannonLayer->getWeapon();
+	CCRect rect = weapon->getCollisionArea(bullet);
+	CCArray* fishesArray = _fishLayer->getFishes();
+	CCObject* object = NULL;
+	CCARRAY_FOREACH(fishesArray,object){
+		Fish* fish = (Fish*)object;
+		if(fish->isRunning() && rect.intersectsRect(fish->getCollisionArea())){
+			this->fishWillBeCaught(fish);
+		}
+	}
+}
+
+void GameScene::alterGold(int delta){
+	FishingJoyData::getInstance()->alterGold(delta);
+	_paneLayer->getGoldCounterLayer()->setNumber(FishingJoyData::getInstance()->getGold());
+}
+
+void GameScene::scheduleTimeUp(){
+	this->alterGold(STATIC_DATA_INT("recovery_gold"));
+}
+
+void GameScene::onEnter()
+{
+	CCScene::onEnter();
+	PersonalAudioEngine::getInstance()->playBackgroundMusic(3);
+=======
+	_cannonLayer->shootTo(target);
+>>>>>>> parent of ec185bd... install FishNet
 }

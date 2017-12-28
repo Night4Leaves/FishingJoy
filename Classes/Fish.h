@@ -35,8 +35,17 @@ public:
 	static Fish* create(FishType type = k_Fish_Type_SmallFish);
 	int getScore();
 	int getSpeed();
+<<<<<<< HEAD
 	CCRect getCollisionArea();
+	void beCaught();
+	void beCaught_CallFunc();
+	CC_SYNTHESIZE(FishType, _type, Type);
+	void moveTo(CCPoint targetPoint);
+	void moveEnd();
+	void reset();
+	CCSize getSize();
+=======
+>>>>>>> parent of ec185bd... install FishNet
 protected:
 	CCSprite* _fishSprite;
-	FishType _type;
 };
