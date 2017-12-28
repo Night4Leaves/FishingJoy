@@ -49,7 +49,6 @@ void FishLayer::addFish(float dt){
 			break;
 		}
 	}
-<<<<<<< HEAD
 }
 
 CCArray* FishLayer::getFishes(){
@@ -75,6 +74,4 @@ void FishLayer::resetFish(Fish* fish){
 	addChild(fish);
 	fish->setPosition(ccp(startX,startY));
 	fish->moveTo(ccp(endX,endY));
-=======
->>>>>>> parent of ec185bd... install FishNet
 }

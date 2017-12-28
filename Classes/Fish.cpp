@@ -35,8 +35,7 @@ Fish* Fish::create(FishType type/* = k_Fish_Type_SmallFish*/){
 	if(fish && fish->init(type)){
 		fish->autorelease();
 		return fish;
-	}
-	else{
+	}else{
 		CC_SAFE_DELETE(fish);
 		return NULL;
 	}
@@ -48,7 +47,6 @@ int Fish::getScore(){
 
 int Fish::getSpeed(){
 	return 200;
-<<<<<<< HEAD
 }
 
 CCRect Fish::getCollisionArea(){
@@ -98,6 +96,4 @@ CCSize Fish::getSize()
 {
 	return _fishSprite->displayFrame()->getRect().size;
 
-=======
->>>>>>> parent of ec185bd... install FishNet
 }

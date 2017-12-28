@@ -13,6 +13,7 @@ public:
 	CREATE_FUNC(Bullet);
 	void end();
 	void flyTo(CCPoint targetInWordSpace, int type =0);
+	CCPoint getCollisionPoint();
 protected:
 	CCSprite*  _bulletSprite;
 };

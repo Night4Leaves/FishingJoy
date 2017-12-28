@@ -26,15 +26,12 @@ bool GameScene::init(){
 		CC_BREAK_IF(!_touchLayer);
 		this->addChild(_touchLayer);
 
-<<<<<<< HEAD
 		_paneLayer = PanelLayer::create();
 		CC_BREAK_IF(!_paneLayer);
 		this->addChild(_paneLayer);
 		_paneLayer->getGoldCounterLayer()->setNumber(FishingJoyData::getInstance()->getGold());
 		
 		scheduleUpdate();
-=======
->>>>>>> parent of ec185bd... install FishNet
 		return true;
 	}while(0);
 	return false;
@@ -77,7 +74,6 @@ void GameScene::cannonAimAt(CCPoint target){
 }
 
 void GameScene::cannonShootTo(CCPoint target){
-<<<<<<< HEAD
 	int cost = (_cannonLayer->getWeapon()->getCannonType() + 1) * 1;
 	int currentGold = FishingJoyData::getInstance()->getGold();
 	if(currentGold >= cost){
@@ -156,7 +152,4 @@ void GameScene::onEnter()
 {
 	CCScene::onEnter();
 	PersonalAudioEngine::getInstance()->playBackgroundMusic(3);
-=======
-	_cannonLayer->shootTo(target);
->>>>>>> parent of ec185bd... install FishNet
 }
