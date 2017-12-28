@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "FishNet.h"
 
 enum{
 	k_Bullet_Action = 0
@@ -55,6 +56,8 @@ float Bullet::getSpeed(int type){
 void Bullet::end(){
 	stopActionByTag(k_Bullet_Action);
 	this->setVisible(false);
+	FishNet* fishNet = (FishNet*)getUserObject();
+	fishNet->showAt(getPosition(), getTag());
 }
 
 void Bullet::flyTo(CCPoint targetInWorldSpace, int type/*=0*/){
@@ -74,4 +77,8 @@ void Bullet::flyTo(CCPoint targetInWorldSpace, int type/*=0*/){
 	CCSequence* sequence = CCSequence::create(moveTo, callFunc, NULL);
 	sequence->setTag(k_Bullet_Action);
 	runAction(sequence);
+}
+
+CCPoint Bullet::getCollisionPoint(){
+	return getParent()->convertToWorldSpace(this->getPosition());
 }

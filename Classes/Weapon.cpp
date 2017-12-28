@@ -6,6 +6,7 @@ Weapon::~Weapon(void)
 {
 	CC_SAFE_RELEASE(_bullets);
 	CC_SAFE_RELEASE(_fishNets);
+	CC_SAFE_RELEASE(_particles);
 }
 
 Weapon* Weapon::create(CannonType type/* = k_Cannon_Type_1*/){
@@ -34,6 +35,10 @@ bool Weapon::init(CannonType type/* = k_Cannon_Type_1*/){
 		CC_BREAK_IF(!_fishNets);
 		CC_SAFE_RETAIN(_fishNets);
 
+		_particles = CCArray::createWithCapacity(BULLET_COUNTS);
+		CC_BREAK_IF(!_particles);
+		CC_SAFE_RETAIN(_particles);
+
 		for(int i = 0; i < BULLET_COUNTS; i++){
 			Bullet* bullet = Bullet::create();
 			_bullets->addObject(bullet);
@@ -45,6 +50,12 @@ bool Weapon::init(CannonType type/* = k_Cannon_Type_1*/){
 			addChild(fishNet);
 			fishNet->setVisible(false);
 			bullet->setUserObject(fishNet);
+
+			CCParticleSystemQuad* particle = CCParticleSystemQuad::create("yuwanglizi.plist");
+			particle->stopSystem();
+			addChild(particle);
+			_particles->addObject(particle);
+			fishNet->setUserObject(particle);
 		}
 		return true;
 	}while(0);
@@ -87,4 +98,12 @@ Bullet* Weapon::getBulletToShoot(){
 		}
 	}
 	return NULL;
+}
+
+CCRect Weapon::getCollisionArea(Bullet* bullet){
+	FishNet* _fishNets = (FishNet*)bullet->getUserObject();
+	if(_fishNets->isVisible()){
+		return _fishNets->getCollisionArea();
+	}
+	return CCRectZero;
 }
