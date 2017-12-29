@@ -212,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{100,96}</string>
             </dict>
-            <key>main_ui_button_05_1.png</key>
+            <key>ui_button_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{880,512},{68,68}}</string>
@@ -225,7 +225,7 @@
                 <key>sourceSize</key>
                 <string>{100,96}</string>
             </dict>
-            <key>main_ui_button_05_2.png</key>
+            <key>ui_button_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{952,470},{68,68}}</string>

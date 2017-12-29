@@ -8,8 +8,14 @@
 #include "PanelLayer.h"
 #include "GoldCounterLayer.h"
 #include "PersonalAudioEngine.h"
+#include "MenuLayer.h"
 
 using namespace cocos2d;
+
+typedef enum{
+k_Operate_Pause = 0,
+k_Operate_Resume
+}OperateFlag;
 
 class GameScene:
 	public CCScene{
@@ -29,10 +35,13 @@ public:
 	void alterGold(int delta);
 	void scheduleTimeUp();
 	void onEnter();
+	void pause();
 protected:
 	BackgroundLayer* _bgLayer;
 	FishLayer* _fishLayer;
 	CannonLayer* _cannonLayer;
 	TouchLayer* _touchLayer;
 	PanelLayer* _paneLayer;
+	MenuLayer* _menuLayer;
+	void operateAllSchedulerAndActions(CCNode* node, OperateFlag flag);
 };

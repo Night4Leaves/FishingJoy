@@ -144,6 +144,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GameMenuLayer.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\GoldCounterLayer.cpp" />
+    <ClCompile Include="..\Classes\MenuLayer.cpp" />
     <ClCompile Include="..\Classes\PanelLayer.cpp" />
     <ClCompile Include="..\Classes\PersonalAudioEngine.cpp" />
     <ClCompile Include="..\Classes\ScheduleCountDown.cpp" />
@@ -167,6 +168,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameMenuLayer.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\GoldCounterLayer.h" />
+    <ClInclude Include="..\Classes\MenuLayer.h" />
     <ClInclude Include="..\Classes\PanelLayer.h" />
     <ClInclude Include="..\Classes\PersonalAudioEngine.h" />
     <ClInclude Include="..\Classes\ScheduleCountDown.h" />

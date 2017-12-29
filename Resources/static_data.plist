@@ -64,7 +64,8 @@
 <string>ui_button_65-ipadhd.png</string>
 <key>button_sub</key>
 <string>ui_button_63-ipadhd.png</string>
-	<key>button_pause_normal</key>
+
+<key>button_pause_normal</key>
 <string>ui_button_01.png</string>
 <key>button_pause_selected</key>
 <string>ui_button_02.png</string>
@@ -80,6 +81,7 @@
 <string>button_other_003-ipadhd.png</string>
 <key>button_fish_selected</key>
 <string>button_other_004-ipadhd.png</string>
+
 	<key>net_particle</key>
 <string>yuwanglizi.plist</string>
 	<key>weapon_percentage_0</key>
@@ -117,37 +119,37 @@
 	<key>fish_reward_0</key>
 	<string>10</string>
 	<key>fish_reward_1</key>
-	<string>15</string>
+	<string>10</string>
 	<key>fish_reward_2</key>
 	<string>20</string>
 	<key>fish_reward_3</key>
-	<string>25</string>
+	<string>20</string>
 	<key>fish_reward_4</key>
 	<string>30</string>
 	<key>fish_reward_5</key>
-	<string>35</string>
+	<string>30</string>
 	<key>fish_reward_6</key>
 	<string>40</string>
 	<key>fish_reward_7</key>
-	<string>45</string>
+	<string>40</string>
 	<key>fish_reward_8</key>
 	<string>50</string>
 	<key>fish_reward_9</key>
-	<string>55</string>
+	<string>50</string>
 	<key>fish_reward_10</key>
 	<string>60</string>
 	<key>fish_reward_11</key>
-	<string>70</string>
+	<string>60</string>
 	<key>fish_reward_12</key>
 	<string>80</string>
 	<key>fish_reward_13</key>
-	<string>85</string>
+	<string>80</string>
 	<key>fish_reward_14</key>
 	<string>90</string>
 	<key>fish_reward_15</key>
-	<string>100</string>
+	<string>90</string>
 	<key>fish_reward_16</key>
-	<string>110</string>
+	<string>100</string>
 	<key>fish_reward_17</key>
 	<string>120</string>
 <key>fish_reward_18</key>
@@ -178,7 +180,6 @@
 <string>ui_button_65-ipadhd.png</string>
 <key>button_sub</key>
 <string>ui_button_63-ipadhd.png</string>
-
 
 </dict>
 </plist>

@@ -4,12 +4,14 @@ GameScene::GameScene(){
 }
 
 GameScene::~GameScene(){
+	CC_SAFE_RELEASE(_menuLayer);
 }
 
 bool GameScene::init(){
 	do{
 		CC_BREAK_IF(!CCScene::init());
 		this->preloadResources();
+
 		_bgLayer = BackgroundLayer::create();
 		CC_BREAK_IF(!_bgLayer);
 		this->addChild(_bgLayer);
@@ -26,9 +28,14 @@ bool GameScene::init(){
 		CC_BREAK_IF(!_touchLayer);
 		this->addChild(_touchLayer);
 
+		_menuLayer = MenuLayer::create();
+		CC_BREAK_IF(!_menuLayer);
+		CC_SAFE_RETAIN(_menuLayer);
+
 		_paneLayer = PanelLayer::create();
 		CC_BREAK_IF(!_paneLayer);
 		this->addChild(_paneLayer);
+
 		_paneLayer->getGoldCounterLayer()->setNumber(FishingJoyData::getInstance()->getGold());
 		
 		scheduleUpdate();
@@ -46,6 +53,15 @@ void GameScene::preloadResources(){
 	spriteFrameCache->addSpriteFramesWithFile("FishActor-Mid-ipadhd.plist");
 	spriteFrameCache->addSpriteFramesWithFile("cannon-ipadhd.plist");
 	spriteFrameCache->addSpriteFramesWithFile("Item-chaojiwuqi-ipadhd.plist");
+
+	CCTextureCache* textureCache = CCTextureCache::sharedTextureCache();
+	textureCache->addImage(STATIC_DATA_STRING("button_music_normal"));
+	textureCache->addImage(STATIC_DATA_STRING("button_music_selected"));
+	textureCache->addImage(STATIC_DATA_STRING("button_photo_normal"));
+	textureCache->addImage(STATIC_DATA_STRING("button_photo_selected"));
+	textureCache->addImage(STATIC_DATA_STRING("button_fish_normal"));
+	textureCache->addImage(STATIC_DATA_STRING("button_fish_selected"));
+
 
 	char str[][50] = {"SmallFish","Croaker","AngelFish","Amphiprion","PufferS",	
 		"Bream","Porgy","Chelonian","Lantern","Ray","Shark","GoldenTrout",	
@@ -119,7 +135,7 @@ void GameScene::fishWillBeCaught(Fish* fish){
 	int fishType = fish->getType();
 	float fishPer[k_Fish_Type_Count] = { 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4 };
 	float weaponPer[k_Cannon_Count] = { 0.3, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1 };
-	if(CCRANDOM_0_1() < 1.1 /*鱼被捉概率*/){
+	if(CCRANDOM_0_1() < (fishPer[fishType] * weaponPer[weaponType])/*鱼被捉概率*/){
 		fish->beCaught();
 		int reward = STATIC_DATA_INT(CCString::createWithFormat(STATIC_DATA_STRING("reward_format"),fishType)->getCString());
 		alterGold(reward);
@@ -152,4 +168,21 @@ void GameScene::onEnter()
 {
 	CCScene::onEnter();
 	PersonalAudioEngine::getInstance()->playBackgroundMusic(3);
+}
+
+void GameScene::pause(){
+	
+
+}
+
+void GameScene::operateAllSchedulerAndActions(CCNode* node, OperateFlag flag){
+	if(node->isRunning()){
+		if(flag == k_Operate_Pause){
+			node->pauseSchedulerAndActions();
+		}else{
+			node->resumeSchedulerAndActions();
+		}
+	}else{
+		node->resumeSchedulerAndActions();
+	}
 }
